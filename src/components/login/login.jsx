@@ -13,9 +13,13 @@ const Login = (props) => {
     }
 
     const onInput = (e) => {  
-        const target = e.target;        
-        const name = target.previousElementSibling.value;
-        // console.log(name);
+        const target = e.target.previousElementSibling;        
+        const name = target.value;
+        
+        if(!name){
+            target.placeholder = '이름을 입력하시라구욧!';
+            return;
+        }
         history.push({
             pathname: '../questions/questions',
             state: {name: name},
