@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import React, { useEffect } from 'react';
 import styles from './login.module.css';
 import Footer from '../footer/footer';
 import Header from '../header/header';
@@ -7,15 +7,36 @@ import Questions from '../questions/questions';
 
 const Login = (props) => {
     const history = useHistory();
+ 
+    const onForm = (e) => {
+        e.preventDefault();
+    }
+
+    const onInput = (e) => {  
+        const target = e.target;        
+        const name = target.previousElementSibling.value;
+        // console.log(name);
+        history.push({
+            pathname: '../questions/questions',
+            state: {name: name},
+        });
+        // target.previousElementSibling.value = '';        
+    }
+    
     return (
         <section className={styles.section}>
             <Header />
-            <button onClick={()=>{
-                history.push('../questions/questions');
-            }}>
-               {/* <Questions setQuestion={setQuestion} /> */}
-                Login
-            </button>
+            <form onSubmit={(e)=>onForm(e)}>
+                <input
+                    className={styles.input}
+                    placeholder='이름을 입력하세요'
+                ></input>
+                <button
+                    onClick={(e)=>onInput(e)}
+                >
+                    Login
+                </button>
+            </form>
             <Footer />
         </section>
     )

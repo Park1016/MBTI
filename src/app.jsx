@@ -12,16 +12,17 @@ const App = (props) => {
   
   const [questions, setQuestions] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => { 
     const requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
 
     fetch("http://localhost:3003/questionList", requestOptions)
-      .then(response => response.json())
-      .then(result => setQuestions(result))
-      .catch(error => console.log('error', error));  
+    .then(response => response.json()) 
+    .then(result => setQuestions(result))
+    .catch(error => console.log('error', error));  
+  
   },[]) 
 
   return (
