@@ -11,11 +11,28 @@ const Questions = ({questions}) => {
     const history = useHistory();
     const location = useLocation();
     
+    const [types, setTypes] = useState([]);
+
+    const onMbtiTypes = (type) => {
+        if(type.I>type.E){
+            setTypes('I');
+        }else if(type.I<type.E){
+            setTypes('E');
+        }
+        console.log(types);
+    }
+
     return (
         <section className={styles.section}>
             <Header />
             <section>
-                {questions.map((question, index) => <Question id={index} key={uuid()} questions={question} />)}
+                {questions.map((question, index) =>
+                <Question
+                    id={index}
+                    key={uuid()}
+                    questions={question}
+                    mbtiTypes={onMbtiTypes}
+                />)}
             </section>
             <button onClick={()=>{
                 history.push({

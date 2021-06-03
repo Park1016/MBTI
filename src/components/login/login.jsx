@@ -3,7 +3,7 @@ import styles from './login.module.css';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import { useHistory } from 'react-router';
-import Questions from '../questions/questions';
+// import Questions from '../questions/questions';
 
 const Login = (props) => {
     const history = useHistory();
@@ -15,7 +15,7 @@ const Login = (props) => {
     const onInput = (e) => {  
         const target = e.target.previousElementSibling;        
         const name = target.value;
-        
+
         if(!name){
             target.placeholder = '이름을 입력하시라구욧!';
             return;
