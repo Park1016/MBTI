@@ -13,6 +13,7 @@ const Login = (props) => {
     }
 
     const onInput = (e) => {  
+        e.preventDefault();
         const target = e.target.previousElementSibling;        
         const name = target.value;
 
@@ -27,6 +28,7 @@ const Login = (props) => {
         // target.previousElementSibling.value = '';        
     }
     
+
     return (
         <section className={styles.section}>
             <Header />

@@ -16,92 +16,87 @@ let JP = [];
 
 
 const Question = ({questions, mbtiTypes}) => {
-    // console.log(mbtiTypes);
-    const [mbtiType, setMbtiType] = useState([]);
 
+    const [mbtiType, setMbtiType] = useState([]);
     const qArray = Object.values(questions.q);
     const q = qArray.join("");
     const a = Object.values(questions.a);
    
+
+    
     const onAnswer = (e, type) => {
         const target = e.currentTarget;
+     
         switch (type[0]) {
             case 'I' :
                 numOfI++;
                 IE.I = numOfI;
                 setMbtiType(IE);
-                mbtiTypes(mbtiType); 
+                // mbtiTypes(mbtiType); 
                 console.log(IE);              
                 break;
             case 'E' :
                 numOfE++;
                 IE.E = numOfE;
                 setMbtiType(IE);
-                mbtiTypes(mbtiType);
+                // mbtiTypes(mbtiType);
                 console.log(IE);
                 break;
             case 'N' :
                 numOfN++;
                 NS.N = numOfN;
                 setMbtiType(NS);
-                mbtiTypes(mbtiType);               
+                // mbtiTypes(mbtiType);               
                 console.log(NS);
                 break;
             case 'S' :
                 numOfS++;
                 NS.S = numOfS;
                 setMbtiType(NS);
-                mbtiTypes(mbtiType);
+                // mbtiTypes(mbtiType);
                 console.log(NS);
                 break;
             case 'T' :
                 numOfT++;
                 TF.T = numOfT;
                 setMbtiType(TF);
-                mbtiTypes(mbtiType);               
+                // mbtiTypes(mbtiType);               
                 console.log(TF);
                 break;
             case 'F' :
                 numOfF++;
                 TF.F = numOfF;
                 setMbtiType(TF);
-                mbtiTypes(mbtiType);
+                // mbtiTypes(mbtiType);
                 console.log(TF);
                 break;
             case 'J' :
                 numOfJ++;
                 JP.J = numOfJ;
                 setMbtiType(JP);
-                mbtiTypes(mbtiType);               
+                // mbtiTypes(mbtiType);               
                 console.log(JP);
                 break;
             case 'P' :
                 numOfP++;
                 JP.P = numOfP;
                 setMbtiType(JP);
-                mbtiTypes(mbtiType);
+                // mbtiTypes(mbtiType);
                 console.log(JP);
                 break;
             default : console.log(type[0]);
         }
 
         
-    }
-
-    const onContainer =(e) => {
-        // console.log(e.currentTarget);
-    }
-
-    // const onFilter = () => {
-    // }
     
-    // console.log(IE);
-    // if(IE.I>IE.E){
+    }
 
-    // }
+    useEffect(()=>{
+        mbtiTypes(mbtiType);
+    })
 
     return (
-        <ul onClick={(e)=>{onContainer(e)}}>
+        <ul>
             <li>{q}</li>
             <div>
                 <button onClick={(e)=>onAnswer(e,a[0].type)}>{a[0].answer}</button>
