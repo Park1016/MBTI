@@ -11,6 +11,7 @@ import Result from './components/result/result';
 const App = (props) => {
   
   const [questions, setQuestions] = useState([]);
+  const [result, setResult] = useState([]);
 
   useEffect(() => { 
     const requestOptions = {
@@ -18,11 +19,21 @@ const App = (props) => {
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3004/questionList", requestOptions)
+    fetch("http://localhost:3005/questionList", requestOptions)
     .then(response => response.json()) 
     .then(result => setQuestions(result))
     .catch(error => console.log('error', error));  
   
+    const requestOptions2 = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    fetch("http://localhost:3005/resultsList", requestOptions2)
+      .then(response => response.json())
+      .then(result => setResult(result))
+      .catch(error => console.log('error', error));
+
   },[]) 
 
   return (
@@ -36,7 +47,7 @@ const App = (props) => {
             <Questions questions={questions} />
           </Route>
           <Route path="/result">
-            <Result />
+            <Result results={result}/>
           </Route>
         </Switch>
       </Router>

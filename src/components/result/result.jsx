@@ -1,14 +1,24 @@
-﻿import React, { useEffect, useRef, useState } from 'react';
+﻿import React, { memo, useEffect, useRef, useState } from 'react';
 import {Bar} from 'react-chartjs-2';
 import styles from './result.module.css';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import { useHistory, useLocation } from 'react-router';
 
-const Result = (props) => {
+const Result = memo(({results}) => {
     const history = useHistory();
     const location = useLocation();
+    const [resultText, setResultText] = useState('');
     const arr = location.state.resultArr;
+
+    useEffect(() =>{
+        results.map((result)=>{
+            // console.log(result);
+            if(result.types == location.state.resultType){
+                setResultText(result.desc);
+            }
+        })
+    },[])
 
     const [barData, setBarData] = useState({
         labels: ['I', 'E', 'N', 'S', 'T', 'F', 'J', 'P'],
@@ -69,12 +79,13 @@ const Result = (props) => {
                 options={barOptions.options}
             />
             </div>
+            <h3>{resultText}</h3>
             <button onClick={()=>{
                 history.push('../login/login');
             }}>result</button>
             <Footer />
         </section>
     )
-    }
+    })
 
 export default Result;

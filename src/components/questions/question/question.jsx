@@ -25,8 +25,8 @@ const Question = ({id, questions, mbtiTypes}) => {
    
 
     const onAnswer = (e, type) => {
-        const target = e.currentTarget;
-        e.stopPropagation();
+        // const target = e.currentTarget;
+        // e.stopPropagation();
     
         switch (type[0]) {
             case 'I' :
@@ -101,10 +101,10 @@ const Question = ({id, questions, mbtiTypes}) => {
 
 
     useEffect(()=>{
-        ul.current.style.display = 'none';
-        if(ul.current.id == 0){
-            ul.current.style.display = 'block';
-        }
+        // ul.current.style.display = 'none';
+        // if(ul.current.id == 0){
+        //     ul.current.style.display = 'block';
+        // }
         mbtiTypes(mbtiType);
     })
 
@@ -112,10 +112,10 @@ const Question = ({id, questions, mbtiTypes}) => {
         <ul id={id} className={styles.ul} ref={ul}>
             <li>{q}</li>
             <div >
-                {/* <button onClick={(e)=>onAnswer(e,a[0].type), (e)=>onMove(e)}>{a[0].answer}</button>
-                <button onClick={(e)=>onAnswer(e,a[1].type), (e)=>onMove(e)}>{a[1].answer}</button> */}
-                <button onClick={(e)=>{onAnswer(e,a[0].type);onMove(e)}}>{a[0].answer}</button>
-                <button onClick={(e)=>{onAnswer(e,a[1].type);onMove(e)}}>{a[1].answer}</button>
+                <button onClick={(e)=>onAnswer(e,a[0].type)}>{a[0].answer}</button>
+                <button onClick={(e)=>onAnswer(e,a[1].type)}>{a[1].answer}</button>
+                {/* <button onClick={(e)=>{onAnswer(e,a[0].type);onMove(e)}}>{a[0].answer}</button>
+                <button onClick={(e)=>{onAnswer(e,a[1].type);onMove(e)}}>{a[1].answer}</button> */}
                 {/* <button>{a[0].answer}</button>
                 <button>{a[1].answer}</button> */}
             </div>
