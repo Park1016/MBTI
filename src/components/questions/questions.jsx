@@ -6,8 +6,12 @@ import Question from './question/question';
 import styles from './questions.module.css';
 import { v4 as uuid } from 'uuid';
 
+let resultType = '';
+let resultArr = [];
+
 const Questions = ({questions}) => {
     
+
     const history = useHistory();
     const location = useLocation();
     
@@ -78,33 +82,63 @@ const Questions = ({questions}) => {
        }    
     }
 
-    useEffect(()=>{
-        console.log(IE);
-        console.log(NS);
-        console.log(TF);
-        console.log(JP);
-        console.log(i,e,n,s,t,f,j,p);
-    })
+    // useEffect(()=>{
+    //     console.log(IE);
+    //     console.log(NS);
+    //     console.log(TF);
+    //     console.log(JP);
+    //     console.log(i,e,n,s,t,f,j,p);
+    // })
 
     const onResult = (event, allUl) => {
         const target = event.target.parentElement.parentElement;
-        const lastQuestion = allUl.lastElementChild;
+        console.log(event.target);
+        // const lastQuestion = allUl.lastElementChild;
 
-        if(target == lastQuestion){
-            // console.log(IE, NS, TF, JP);
-            // console.log(i,e,n,s,t,f,j,p);   
-            let concat1 = IE.concat(NS);
-            let concat2 = concat1.concat(TF);
-            let resultType = concat2.concat(JP);
-            let resultObj = {i:i,e:e,n:n,s:s,t:t,f:f,j:j,p:p};
+        // if(target == lastQuestion){
+        if(!IE){
+            return;
         }
+        console.log(IE, NS, TF, JP);
+        console.log(i,e,n,s,t,f,j,p);   
+        let concat1 = IE.concat(NS);
+        let concat2 = concat1.concat(TF);
+        resultType = concat2.concat(JP);
+        resultArr = [i,e,n,s,t,f,j,p];
+            
+            // getData(resultType, resultArr);
+        
     }
 
-   
+    // let getData = (resultTypeParam, resultArrParam) => {
+    //     if(resultTypeParam === undefined){
+    //         return;
+    //     }
+    //     else{
+    //         let resultType = resultTypeParam;
+    //         let resultArr = resultArrParam;
+    //         console.log(resultType, resultArr);
+    //         return {resultTypeKey:resultType, resultArrKey:resultArr};
+    //     }
+    // }
+
+    // async function getData(type, obj) {
+    //     if(type===undefined){
+    //         return;
+    //     }
+    //     resultType1 = await type;
+    //     resultArr1 = await obj;
+    // }
+
     const allUl = allQuestions.current;
-    // console.log(lastQuestion);
-
-
+    // const result = getData();
+    // const test = result.resultType;
+    // result.then((result)=>console.log(result));
+    // console.log(result);
+    // console.log(result.resultArrKey);
+    console.log(resultArr);
+    console.log(resultType);
+    
     return (
         <section className={styles.section}>
             <Header onClick={onResult}/>
@@ -120,10 +154,15 @@ const Questions = ({questions}) => {
                     mbtiTypes={onMbtiTypes}   
                 />)}
             </section>
+            {/* <h1 onClick={}>꺄루룩</h1> */}
             <button onClick={()=>{
                 history.push({
                     pathname: '../result/result',
-                    state: {name: location.state.name}
+                    state: {
+                        name: location.state.name,
+                        resultType:resultType,
+                        resultArr:resultArr
+                    }
                 });
             }}>Questions</button>
             <Footer onClick={onResult}/>

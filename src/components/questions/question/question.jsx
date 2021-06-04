@@ -85,10 +85,7 @@ const Question = ({questions, mbtiTypes}) => {
                 console.log(JP);
                 break;
             default : console.log(type[0]);
-        }
-
-        
-    
+        }  
     }
 
     useEffect(()=>{
