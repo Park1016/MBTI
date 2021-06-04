@@ -30,29 +30,30 @@ const Result = (props) => {
             }
         ]
     });
-    // set options
-    // const [barOptions, setBarOptions] = useState({
-    //     options: {
-    //         scales: {
-    //             yAxes: [
-    //                 {
-    //                     ticks: {
-    //                         beginAtZero: true
-    //                     }
-    //                 }
-    //             ]
-    //         },
-    //         title: {
-    //             display: true,
-    //             text: 'Data Orgranized In Bars',
-    //             fontSize: 25
-    //         },
-    //         legend: {
-    //             display: true,
-    //             position: 'top'
-    //         }
-    //     }
-    // });
+    //set options
+    const [barOptions, setBarOptions] = useState({
+        options: {
+            responsive: false,
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }
+                ]
+            },
+            title: {
+                display: true,
+                text: 'Data Orgranized In Bars',
+                fontSize: 25
+            },
+            legend: {
+                display: true,
+                position: 'top'
+            }
+        }
+    });
     
     return (
             <section className={styles.section}>
@@ -62,7 +63,10 @@ const Result = (props) => {
             <div className="BarExample">
             <Bar
                 data={barData}
-                // options={barOptions.options}
+                // style={width='50vw', height='20vh'}
+                width={500}
+                height={200}
+                options={barOptions.options}
             />
             </div>
             <button onClick={()=>{

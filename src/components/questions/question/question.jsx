@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useRef, useState } from 'react';
 import styles from './question.module.css';
 
 let numOfI = 0;
@@ -15,18 +15,19 @@ let TF = [];
 let JP = [];
 
 
-const Question = ({questions, mbtiTypes}) => {
+const Question = ({id, questions, mbtiTypes}) => {
 
     const [mbtiType, setMbtiType] = useState([]);
     const qArray = Object.values(questions.q);
     const q = qArray.join("");
     const a = Object.values(questions.a);
+    const ul = useRef();
    
 
-    
     const onAnswer = (e, type) => {
         const target = e.currentTarget;
-     
+        e.stopPropagation();
+    
         switch (type[0]) {
             case 'I' :
                 numOfI++;
@@ -88,16 +89,35 @@ const Question = ({questions, mbtiTypes}) => {
         }  
     }
 
+    const onMove = (e) => {
+        // const target = e.target.parentElement.parentElement;
+        e.stopPropagation();
+        if(ul.current.id == 79){
+            return;
+        }
+        ul.current.style.display = 'none';
+        ul.current.nextElementSibling.style.display='block';    
+    }
+
+
     useEffect(()=>{
+        ul.current.style.display = 'none';
+        if(ul.current.id == 0){
+            ul.current.style.display = 'block';
+        }
         mbtiTypes(mbtiType);
     })
 
     return (
-        <ul>
+        <ul id={id} className={styles.ul} ref={ul}>
             <li>{q}</li>
-            <div>
-                <button onClick={(e)=>onAnswer(e,a[0].type)}>{a[0].answer}</button>
-                <button onClick={(e)=>onAnswer(e,a[1].type)}>{a[1].answer}</button>
+            <div >
+                {/* <button onClick={(e)=>onAnswer(e,a[0].type), (e)=>onMove(e)}>{a[0].answer}</button>
+                <button onClick={(e)=>onAnswer(e,a[1].type), (e)=>onMove(e)}>{a[1].answer}</button> */}
+                <button onClick={(e)=>{onAnswer(e,a[0].type);onMove(e)}}>{a[0].answer}</button>
+                <button onClick={(e)=>{onAnswer(e,a[1].type);onMove(e)}}>{a[1].answer}</button>
+                {/* <button>{a[0].answer}</button>
+                <button>{a[1].answer}</button> */}
             </div>
         </ul>
     )

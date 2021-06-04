@@ -92,7 +92,7 @@ const Questions = ({questions}) => {
 
     const onResult = (event, allUl) => {
         const target = event.target.parentElement.parentElement;
-        console.log(event.target);
+        // console.log(event.target);
         // const lastQuestion = allUl.lastElementChild;
 
         // if(target == lastQuestion){
@@ -145,7 +145,7 @@ const Questions = ({questions}) => {
             <section
                 className={styles.allQuestions} 
                 ref={allQuestions}
-                onClick={(e)=>onResult(e, allUl)}>
+                onClick={(e)=>onResult(e, allUl)}> 
                 {questions.map((question, index) =>
                 <Question
                     id={index}
