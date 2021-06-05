@@ -11,9 +11,11 @@ const Result = memo(({results}) => {
     const [resultText, setResultText] = useState('');
     const arr = location.state.resultArr;
 
+    console.log(location.state.resultType);
+    console.log(arr);
+
     useEffect(() =>{
         results.map((result)=>{
-            // console.log(result);
             if(result.types == location.state.resultType){
                 setResultText(result.desc);
             }

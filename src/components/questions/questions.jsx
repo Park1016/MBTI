@@ -104,10 +104,7 @@ const Questions = ({questions}) => {
         let concat1 = IE.concat(NS);
         let concat2 = concat1.concat(TF);
         resultType = concat2.concat(JP);
-        resultArr = [i,e,n,s,t,f,j,p];
-            
-            // getData(resultType, resultArr);
-        
+        resultArr = [i,e,n,s,t,f,j,p];     
     }
 
     // let getData = (resultTypeParam, resultArrParam) => {

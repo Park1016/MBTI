@@ -19,7 +19,7 @@ const App = (props) => {
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3005/questionList", requestOptions)
+    fetch("http://localhost:3006/questionList", requestOptions)
     .then(response => response.json()) 
     .then(result => setQuestions(result))
     .catch(error => console.log('error', error));  
@@ -29,7 +29,7 @@ const App = (props) => {
       redirect: 'follow'
     };
     
-    fetch("http://localhost:3005/resultsList", requestOptions2)
+    fetch("http://localhost:3006/resultsList", requestOptions2)
       .then(response => response.json())
       .then(result => setResult(result))
       .catch(error => console.log('error', error));
