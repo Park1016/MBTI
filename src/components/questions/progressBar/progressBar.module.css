@@ -1,0 +1,17 @@
+﻿.bar {
+  position: relative;
+  border: 1px solid black;
+  height: 1.5rem;
+  width: 50px;
+}
+
+.fill {
+  position: absolute;
+  background-color: green;
+  height: 1.5rem;
+}
+
+.text {
+  position: relative;
+  margin: 0;
+}

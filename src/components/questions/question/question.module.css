@@ -6,3 +6,11 @@
   color: red;
   background-color: yellow;
 }
+
+.btn {
+  border: 1px solid black;
+}
+
+.btn:hover {
+  border: 1px solid red;
+}

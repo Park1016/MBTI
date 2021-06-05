@@ -3,6 +3,7 @@ import { useHistory, useLocation } from 'react-router';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import Question from './question/question';
+import ProgressBar from './progressBar/progressBar';
 import styles from './questions.module.css';
 import { v4 as uuid } from 'uuid';
 
@@ -11,7 +12,6 @@ let resultArr = [];
 
 const Questions = ({questions}) => {
     
-
     const history = useHistory();
     const location = useLocation();
     
@@ -30,6 +30,11 @@ const Questions = ({questions}) => {
     const [p, setP] = useState(0);
 
     const allQuestions = useRef();
+    const [bar, setBar] = useState(0);
+
+    const progressBar = (value) => {
+        setBar(value);
+    }
 
     const onMbtiTypes = (type) => {
        if(type.I > type.E){
@@ -91,7 +96,7 @@ const Questions = ({questions}) => {
     // })
 
     const onResult = (event, allUl) => {
-        const target = event.target.parentElement.parentElement;
+        // const target = event.target.parentElement.parentElement;
         // console.log(event.target);
         // const lastQuestion = allUl.lastElementChild;
 
@@ -138,7 +143,10 @@ const Questions = ({questions}) => {
     
     return (
         <section className={styles.section}>
-            <Header onClick={onResult}/>
+            <Header />
+            <section>
+                <ProgressBar progressBar={bar}/>
+            </section>
             <section
                 className={styles.allQuestions} 
                 ref={allQuestions}
@@ -146,23 +154,24 @@ const Questions = ({questions}) => {
                 {questions.map((question, index) =>
                 <Question
                     id={index}
-                    key={uuid()}
+                    // key={uuid()}
+                    key={index}
                     questions={question}
                     mbtiTypes={onMbtiTypes}   
+                    progressBar={progressBar}
                 />)}
             </section>
-            {/* <h1 onClick={}>꺄루룩</h1> */}
             <button onClick={()=>{
                 history.push({
                     pathname: '../result/result',
                     state: {
                         name: location.state.name,
-                        resultType:resultType,
-                        resultArr:resultArr
+                        resultType: resultType,
+                        resultArr: resultArr
                     }
                 });
             }}>Questions</button>
-            <Footer onClick={onResult}/>
+            <Footer />
         </section>
     )
 }

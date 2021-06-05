@@ -9,7 +9,8 @@ const Result = memo(({results}) => {
     const history = useHistory();
     const location = useLocation();
     const [resultText, setResultText] = useState('');
-    const arr = location.state.resultArr;
+    let type = location.state.resultType;
+    let arr = location.state.resultArr;
 
     console.log(location.state.resultType);
     console.log(arr);
@@ -66,7 +67,12 @@ const Result = memo(({results}) => {
             }
         }
     });
-    
+
+    const onReset = () => {
+        type = '';
+        arr = [];
+    }
+
     return (
             <section className={styles.section}>
             <Header />
@@ -83,6 +89,7 @@ const Result = memo(({results}) => {
             </div>
             <h3>{resultText}</h3>
             <button onClick={()=>{
+                onReset();
                 history.push('../login/login');
             }}>result</button>
             <Footer />

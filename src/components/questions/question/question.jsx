@@ -13,13 +13,15 @@ let IE = [];
 let NS = [];
 let TF = [];
 let JP = [];
+let num = 0;
+let dynamicNum = 1;
 
 
 
 
-const Question = memo(({id, questions, mbtiTypes}) => {
+const Question = memo(({id, questions, mbtiTypes, progressBar}) => {
 
-    const [mbtiType, setMbtiType] = useState([]);
+    let [mbtiType, setMbtiType] = useState([]);
    
     const qArray = Object.values(questions.q);
     const q = qArray.join("");
@@ -27,66 +29,84 @@ const Question = memo(({id, questions, mbtiTypes}) => {
     const ul = useRef();
     const prev = useRef();
     const next = useRef();
-   
+  
+    const onPlusNum = (e) => {
+        // e.stopPropagation();
+        num = num+dynamicNum;
+        console.log(num);
+        progressBar(num);
+    }
 
     const onAnswer = (e, type) => {
        
         // const target = e.currentTarget;
-        e.preventDefault();
-        
-        
-      
+        // e.preventDefault();
+        // e.stopPropagation();
         switch (type[0]) {
             case 'I' :
                 numOfI++;
                 IE.I = numOfI;
                 setMbtiType(IE); 
-                console.log(IE);              
+                console.log(IE);
+                onPlusNum(e);              
                 break;
             case 'E' :
                 numOfE++;
                 IE.E = numOfE;
                 setMbtiType(IE);
                 console.log(IE);
+                onPlusNum(e);
                 break;
             case 'N' :
                 numOfN++;
                 NS.N = numOfN;
                 setMbtiType(NS);               
                 console.log(NS);
+                onPlusNum(e);
                 break;
             case 'S' :
                 numOfS++;
                 NS.S = numOfS;
                 setMbtiType(NS);
                 console.log(NS);
+                onPlusNum(e);
                 break;
             case 'T' :
                 numOfT++;
                 TF.T = numOfT;
                 setMbtiType(TF);               
                 console.log(TF);
+                onPlusNum(e);
                 break;
             case 'F' :
                 numOfF++;
                 TF.F = numOfF;
                 setMbtiType(TF);
                 console.log(TF);
+                onPlusNum(e);
                 break;
             case 'J' :
                 numOfJ++;
                 JP.J = numOfJ;
                 setMbtiType(JP);               
                 console.log(JP);
+                onPlusNum(e);
                 break;
             case 'P' :
                 numOfP++;
                 JP.P = numOfP;
                 setMbtiType(JP);
                 console.log(JP);
+                onPlusNum(e);
                 break;
             default : console.log(type[0]);
         }  
+    }
+
+
+    const onTotal = (e, type) => {
+        onAnswer(e, type);
+        onMove(e);
     }
 
     const onPreviousMouse = (e) => {
@@ -112,6 +132,8 @@ const Question = memo(({id, questions, mbtiTypes}) => {
         if(target.previousElementSibling == null){
             return;
         }
+        num = num - dynamicNum;
+        progressBar(num);
         target.style.display = 'none';
         target.previousElementSibling.style.display='block'; 
     }
@@ -126,9 +148,6 @@ const Question = memo(({id, questions, mbtiTypes}) => {
     }
 
     const onMove = (e) => {
-        // const target = e.target.parentElement.parentElement;
-        // e.stopPropagation();
-        e.preventDefault();
         if(ul.current.id == 79){
             return;
         }
@@ -145,7 +164,24 @@ const Question = memo(({id, questions, mbtiTypes}) => {
     //     }
     // }
 
+    useEffect(()=>{
+        numOfI = 0;
+        numOfE = 0;
+        numOfN = 0;
+        numOfS = 0;
+        numOfT = 0;
+        numOfF = 0;
+        numOfJ = 0;
+        numOfP = 0;
+        IE = [];
+        NS = [];
+        TF = [];
+        JP = [];
+        num = 0;
+    },[])
+
     useEffect((e)=>{
+        
         ul.current.style.display = 'none';
         if(ul.current.id == 0){
             ul.current.style.display = 'block';
@@ -159,6 +195,9 @@ const Question = memo(({id, questions, mbtiTypes}) => {
         mbtiTypes(mbtiType);
     })
 
+    // useEffect(()=>{
+    //     console.log(num);
+    // },[])
 
     return (
         <ul id={id} className={styles.ul} ref={ul}>
@@ -166,12 +205,14 @@ const Question = memo(({id, questions, mbtiTypes}) => {
             <button onMouseOver={(e)=>onNextMouse(e)} onClick={onNext} ref={next}><i className="fas fa-chevron-right"></i></button>
             <li>{q}</li>
             <div>
-                {/* <button onClick={(e)=>onAnswer(e,a[0].type)} >{a[0].answer}</button>
-                <button onClick={(e)=>onAnswer(e,a[1].type)} >{a[1].answer}</button> */}
-                {/* <button onClick={(e)=>onMove(e)}>{a[0].answer}</button>
-                <button onClick={(e)=>onMove(e)}>{a[1].answer}</button> */}
-                <button onClick={(e)=>{onAnswer(e,a[0].type);onMove(e)}} >{a[0].answer}</button>
-                <button onClick={(e)=>{onAnswer(e,a[1].type);onMove(e)}} >{a[1].answer}</button>
+                {/* <button className={styles.btn} onClick={(e)=>onAnswer(e,a[0].type)} >{a[0].answer}</button>
+                <button className={styles.btn} onClick={(e)=>onAnswer(e,a[1].type)} >{a[1].answer}</button> */}
+                {/* <button className={styles.btn} onClick={(e)=>onMove(e)}>{a[0].answer}</button>
+                <button className={styles.btn} onClick={(e)=>onMove(e)}>{a[1].answer}</button> */}
+                {/* <button className={styles.btn} onClick={(e)=>{onAnswer(e,a[0].type);onMove(e)}} >{a[0].answer}</button>
+                <button className={styles.btn} onClick={(e)=>{onAnswer(e,a[1].type);onMove(e)}} >{a[1].answer}</button> */}
+                <button className={styles.btn} onClick={(e)=>onTotal(e,a[0].type)} >{a[0].answer}</button>
+                <button className={styles.btn} onClick={(e)=>onTotal(e,a[1].type)} >{a[1].answer}</button>
             </div>
         </ul>
     )
