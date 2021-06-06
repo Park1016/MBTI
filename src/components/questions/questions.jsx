@@ -1,24 +1,26 @@
-﻿import React, {useEffect, useRef, useState} from 'react';
+﻿import React, {useRef, useState, memo} from 'react';
 import { useHistory, useLocation } from 'react-router';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import Question from './question/question';
 import ProgressBar from './progressBar/progressBar';
 import styles from './questions.module.css';
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 
 let resultType = '';
 let resultArr = [];
 
-const Questions = ({questions}) => {
+
+
+const Questions = memo(({questions}) => {
     
     const history = useHistory();
     const location = useLocation();
     
-    const [IE, setIE] = useState(0);
-    const [NS, setNS] = useState(0);
-    const [TF, setTF] = useState(0);
-    const [JP, setJP] = useState(0);
+    const [IE, setIE] = useState('');
+    const [NS, setNS] = useState('');
+    const [TF, setTF] = useState('');
+    const [JP, setJP] = useState('');
 
     const [i, setI] = useState(0);
     const [e, setE] = useState(0);
@@ -37,75 +39,59 @@ const Questions = ({questions}) => {
     }
 
     const onMbtiTypes = (type) => {
-       if(type.I > type.E){
-           console.log('I');
-           setIE('I');
-           setI(type.I);
-           setE(type.E);
-       }
-       if(type.I < type.E){
-           console.log('E');
-           setIE('E');
-           setI(type.I);
-           setE(type.E);
-       }
-       if(type.N > type.S){
-        //    console.log('N);
-           setNS('N');
-           setN(type.N);
-           setS(type.S);
-       }
-       if(type.N < type.S){
-        //    console.log('S');
-           setNS('S');
-           setN(type.N);
-           setS(type.S);
-       }
-       if(type.T > type.F){
-        //    console.log('T);
-           setTF('T');
-           setT(type.T);
-           setF(type.F);
-       }
-       if(type.T < type.F){
-        //    console.log('F');
-           setTF('F');
-           setT(type.T);
-           setF(type.F);
-       }
-       if(type.P > type.J){
-        //    console.log('P);
-           setJP('P');
-           setP(type.P);
-           setJ(type.J);
-       }
-       if(type.P < type.J){
-        //    console.log('J');
-           setJP('J');
-           setP(type.P);
-           setJ(type.J);
-       }    
+        if(type.I){
+            setI(type.I);
+        }
+        if(type.E){
+            setE(type.E);
+        }
+        if(type.N){
+            setN(type.N);
+        }
+        if(type.S){
+            setS(type.S);
+        }
+        if(type.T){
+            setT(type.T);
+        }
+        if(type.F){
+            setF(type.F);
+        }
+        if(type.J){
+            setJ(type.J);
+        }
+        if(type.P){
+            setP(type.P);
+        }
+
+        if(i > e){
+            setIE('I');             
+        }
+        if(i < e){
+            setIE('E');
+        }
+        if(n > s){
+            setNS('N');          
+        }
+        if(n < s){
+            setNS('S');          
+        }
+        if(t > f){
+            setTF('T');      
+        }
+        if(t < f){
+            setTF('F');          
+        }
+        if(p > j){
+            setJP('P');       
+        }
+        if(p < j){
+            setJP('J');       
+        }    
+        onResult();
     }
 
-    // useEffect(()=>{
-    //     console.log(IE);
-    //     console.log(NS);
-    //     console.log(TF);
-    //     console.log(JP);
-    //     console.log(i,e,n,s,t,f,j,p);
-    // })
-
-    const onResult = (event, allUl) => {
-        // const target = event.target.parentElement.parentElement;
-        // console.log(event.target);
-        // const lastQuestion = allUl.lastElementChild;
-
-        // if(target == lastQuestion){
-        if(!IE){
-            return;
-        }
-        console.log(IE, NS, TF, JP);
-        console.log(i,e,n,s,t,f,j,p);   
+    const onResult = () => {   
         let concat1 = IE.concat(NS);
         let concat2 = concat1.concat(TF);
         resultType = concat2.concat(JP);
@@ -133,47 +119,47 @@ const Questions = ({questions}) => {
     // }
 
     const allUl = allQuestions.current;
-    // const result = getData();
-    // const test = result.resultType;
-    // result.then((result)=>console.log(result));
-    // console.log(result);
-    // console.log(result.resultArrKey);
-    console.log(resultArr);
-    console.log(resultType);
+
+    // console.log(resultArr);
+    // console.log(resultType);
     
     return (
-        <section className={styles.section}>
+        <section className={styles.container}>
             <Header />
-            <section>
-                <ProgressBar progressBar={bar}/>
+            <section className={styles.contents}>    
+                <section>
+                    <ProgressBar progressBar={bar}/>
+                </section>
+                <section
+                    className={styles.allQuestions} 
+                    ref={allQuestions}
+                    > 
+                    {questions.map((question, index) =>
+                    <Question
+                        id={index}
+                        // key={uuid()}
+                        key={index}
+                        questions={question}
+                        mbtiTypes={onMbtiTypes}   
+                        progressBar={progressBar}
+                    />)}
+                </section>
+                <div className={styles.btnArea}>
+                    <button className={styles.btn} onClick={()=>{
+                        history.push({
+                            pathname: '../result/result',
+                            state: {
+                                name: location.state.name,
+                                resultType: resultType,
+                                resultArr: resultArr
+                            }
+                        });
+                    }}>결과보기</button>
+                </div>
             </section>
-            <section
-                className={styles.allQuestions} 
-                ref={allQuestions}
-                onClick={(e)=>onResult(e, allUl)}> 
-                {questions.map((question, index) =>
-                <Question
-                    id={index}
-                    // key={uuid()}
-                    key={index}
-                    questions={question}
-                    mbtiTypes={onMbtiTypes}   
-                    progressBar={progressBar}
-                />)}
-            </section>
-            <button onClick={()=>{
-                history.push({
-                    pathname: '../result/result',
-                    state: {
-                        name: location.state.name,
-                        resultType: resultType,
-                        resultArr: resultArr
-                    }
-                });
-            }}>Questions</button>
             <Footer />
         </section>
     )
-}
+})
 
 export default Questions;

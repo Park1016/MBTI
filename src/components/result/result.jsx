@@ -1,4 +1,4 @@
-﻿import React, { memo, useEffect, useRef, useState } from 'react';
+﻿import React, { memo, useEffect, useState } from 'react';
 import {Bar} from 'react-chartjs-2';
 import styles from './result.module.css';
 import Footer from '../footer/footer';
@@ -12,8 +12,8 @@ const Result = memo(({results}) => {
     let type = location.state.resultType;
     let arr = location.state.resultArr;
 
-    console.log(location.state.resultType);
-    console.log(arr);
+    // console.log(location.state.resultType);
+    // console.log(arr);
 
     useEffect(() =>{
         results.map((result)=>{
@@ -74,24 +74,36 @@ const Result = memo(({results}) => {
     }
 
     return (
-            <section className={styles.section}>
+            <section className={styles.container}>
             <Header />
-            <h1>{location.state.name}님의 성격유형 검사</h1>
-            <h1>{location.state.name}님은 {location.state.resultType}입니다.</h1>
-            <div className="BarExample">
-            <Bar
-                data={barData}
-                // style={width='50vw', height='20vh'}
-                width={500}
-                height={200}
-                options={barOptions.options}
-            />
+            <div className={styles.content}>
+                {/* <p className={styles.p1}>{location.state.name} 님의 성격유형 검사</p> */}
+                <p className={styles.p2}>{location.state.name} 님은 {location.state.resultType} 입니다.</p>
+                <div className={styles.bar}>
+                <Bar
+                    data={barData}
+                    // style={width='50vw', height='20vh'}
+                    width={530}
+                    height={200}
+                    options={barOptions.options}
+                />
+                </div>
+                <div className={styles.text}>
+                    <div className={styles.left}>
+                        <i className="fas fa-quote-left"></i>
+                    </div>
+                    <div className={styles.right}>
+                        <i className="fas fa-quote-right"></i>
+                    </div>
+                    <p>{resultText}</p>
+                </div>
+                <div className={styles.btnArea}>
+                    <button className={styles.btn} onClick={()=>{
+                        onReset();
+                        history.push('../login/login');
+                    }}>다시하기</button>
+                </div>
             </div>
-            <h3>{resultText}</h3>
-            <button onClick={()=>{
-                onReset();
-                history.push('../login/login');
-            }}>result</button>
             <Footer />
         </section>
     )

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import styles from './app.module.css';
 import './app.module.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -8,7 +8,7 @@ import Questions from './components/questions/questions';
 import Result from './components/result/result';
 // import * as loadData from './service/mbti.js';
 
-const App = (props) => {
+const App = memo((props) => {
   
   const [questions, setQuestions] = useState([]);
   const [result, setResult] = useState([]);
@@ -19,17 +19,12 @@ const App = (props) => {
       redirect: 'follow'
     };
 
-    fetch("http://localhost:3006/questionList", requestOptions)
+    fetch("http://localhost:3007/questionList", requestOptions)
     .then(response => response.json()) 
     .then(result => setQuestions(result))
     .catch(error => console.log('error', error));  
-  
-    const requestOptions2 = {
-      method: 'GET',
-      redirect: 'follow'
-    };
     
-    fetch("http://localhost:3006/resultsList", requestOptions2)
+    fetch("http://localhost:3007/resultsList", requestOptions)
       .then(response => response.json())
       .then(result => setResult(result))
       .catch(error => console.log('error', error));
@@ -53,6 +48,6 @@ const App = (props) => {
       </Router>
     </div>
   );
-}
+})
 
 export default App;

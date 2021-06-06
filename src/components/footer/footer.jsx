@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 
-const Footer = (props) => {
-    return <h1>footer</h1>
-}
+const Footer = ((props) => {
+    return <div>&copy;2021 PHJ all rights all deserved</div>
+})
 
-export default Footer;
+export default React.memo(Footer);

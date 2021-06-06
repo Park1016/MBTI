@@ -1,14 +1,24 @@
-﻿.bar {
+﻿.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+}
+
+.bar {
   position: relative;
   border: 1px solid black;
-  height: 1.5rem;
-  width: 50px;
+  width: 24rem;
+  height: 0.8rem;
+  border-radius: 10px;
 }
 
 .fill {
   position: absolute;
   background-color: green;
-  height: 1.5rem;
+  height: 101%;
+  border-radius: 10px;
 }
 
 .text {

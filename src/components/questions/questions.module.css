@@ -1,3 +1,50 @@
-﻿.allQuestions {
-  position: relative;
+﻿* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contents {
+  margin: 0.5rem 0;
+  border: 1px solid black;
+  width: 24rem;
+  height: 30rem;
+}
+
+.allQuestions {
+  width: 24rem;
+  height: 24rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnArea {
+  width: 24rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  width: 4rem;
+  height: 1.5rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }

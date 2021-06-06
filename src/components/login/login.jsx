@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+﻿import React from 'react';
 import styles from './login.module.css';
 import Footer from '../footer/footer';
 import Header from '../header/header';
@@ -30,17 +30,18 @@ const Login = (props) => {
     
 
     return (
-        <section className={styles.section}>
-            <Header />
-            <form onSubmit={(e)=>onForm(e)}>
+        <section className={styles.container}>
+            <Header />    
+            <form className={styles.form} onSubmit={(e)=>onForm(e)}>
                 <input
                     className={styles.input}
                     placeholder='이름을 입력하세요'
                 ></input>
                 <button
+                    className={styles.btn}
                     onClick={(e)=>onInput(e)}
                 >
-                    Login
+                    시작하기
                 </button>
             </form>
             <Footer />

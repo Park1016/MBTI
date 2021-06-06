@@ -1,1 +1,55 @@
-﻿
+﻿.container,
+.content,
+.p1,
+.p2,
+.bar,
+.text,
+.btnArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.content {
+  margin: 0.5rem 0;
+  border: 1px solid black;
+  width: 40rem;
+  height: 35rem;
+}
+
+/* .p1 {
+  height: 3rem;
+} */
+
+.p2 {
+  height: 4rem;
+}
+
+.bar {
+  width: 30rem;
+  height: 15rem;
+}
+
+.text {
+  width: 28rem;
+  height: 10rem;
+  margin-bottom: 2rem;
+}
+
+.btnArea {
+  height: 4rem;
+}
+
+.left {
+  transform: translate(-16rem, 1rem);
+}
+
+.right {
+  transform: translateX(16rem);
+}

@@ -1,16 +1,78 @@
-﻿/* .ul {
-  position: absolute;
-} */
-
-.selected {
-  color: red;
-  background-color: yellow;
+﻿.container {
+  border: 1px solid red;
+  width: 24rem;
+  height: 24rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn {
+.chevron {
+  width: 29rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prev,
+.next {
+  width: 2rem;
+  height: 1rem;
+  text-align: center;
+  padding: 0.35rem 0 0.65rem 0;
   border: 1px solid black;
+  border-radius: 50%;
+  transform: translate(-2.5rem, 10rem);
+  cursor: pointer;
 }
 
-.btn:hover {
+.contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.qArea {
+  border: 1px solid black;
+  width: 24rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.q {
+  width: 23rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  word-break: normal;
+}
+
+.answer {
+  display: flex;
+  flex-direction: column;
+  height: 5rem;
+}
+
+.yes,
+.no {
+  width: 4rem;
+  height: 1.5rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.yes:hover,
+.no:hover {
   border: 1px solid red;
 }
