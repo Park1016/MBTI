@@ -37,7 +37,17 @@ const Login = (props) => {
 
     return (
         <section className={styles.container}>
-            <Header />    
+            <div className={styles.floating}></div>
+            <div className={styles.i}>I</div>
+            <div className={styles.e}>E</div>
+            <div className={styles.n}>N</div>
+            <div className={styles.f}>F</div>
+            <div className={styles.s}>S</div>
+            <div className={styles.t}>T</div>
+            <div className={styles.j}>J</div>
+            <div className={styles.p}>P</div>
+            <p className={styles.text}>80가지 문항과 함께하는</p>
+            <p className={styles.title}>MBTI 테스트</p>
             <form className={styles.form} onSubmit={(e)=>onForm(e)}>
                 <input
                     onKeyDown={(e)=>onKeyDown(e)}
@@ -51,7 +61,7 @@ const Login = (props) => {
                     시작하기
                 </button>
             </form>
-            <Footer />
+            {/* <Footer /> */}
         </section>
     )
 }

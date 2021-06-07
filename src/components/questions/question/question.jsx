@@ -46,7 +46,7 @@ const Question = memo(({id, questions, mbtiTypes, progressBar, btn}) => {
             return;
         }
         if(num == 79){
-            btn.style.backgroundColor = 'red';
+            btn.style.backgroundColor = '#e5b8cf';
         }
         onPlusBtnNum();
         switch (type[0]) {

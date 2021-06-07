@@ -5,7 +5,7 @@ const ProgressBar = (({progressBar}) => {
     // console.log(progressBar);
     const bar = useRef();
     const onBar = () => {
-        bar.current.style.width = `calc(${progressBar}*1.25%)`;
+        bar.current.style.width = `calc(${progressBar}*1.255%)`;
     }
     useEffect(()=>{
         onBar();

@@ -14,17 +14,19 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* background-color: #07185e; */
 }
 
 .contents {
   margin: 0.5rem 0;
   border: 1px solid black;
-  width: 24rem;
+  width: 40rem;
   height: 30rem;
+  background-color: white;
 }
 
 .allQuestions {
-  width: 24rem;
+  width: 40rem;
   height: 24rem;
   display: flex;
   flex-direction: column;
@@ -33,7 +35,7 @@ ul {
 }
 
 .btnArea {
-  width: 24rem;
+  width: 40rem;
   height: 3.5rem;
   display: flex;
   align-items: center;

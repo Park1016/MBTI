@@ -9,18 +9,17 @@
 .bar {
   position: relative;
   border: 1px solid black;
-  width: 24rem;
+  width: 40rem;
   height: 0.8rem;
   border-radius: 10px;
 }
 
 .fill {
   position: absolute;
-  background-color: green;
-  height: 101%;
+  background: linear-gradient(135deg, #e5b8cf, #7eb5ee);
+  height: 100%;
   border-radius: 10px;
-  padding-right: 0.1rem;
-  transform: translateX(-0.1rem);
+  transform: translateX(-0.05rem);
 }
 
 .text {

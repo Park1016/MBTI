@@ -1,6 +1,6 @@
 ﻿.container {
-  border: 1px solid red;
-  width: 24rem;
+  border: 1px solid black;
+  width: 40rem;
   height: 24rem;
   display: flex;
   flex-direction: column;
@@ -9,11 +9,12 @@
 }
 
 .chevron {
-  width: 29rem;
+  width: 38rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 0.5rem 1rem;
 }
 
 .prev,
@@ -24,7 +25,6 @@
   padding: 0.35rem 0 0.65rem 0;
   border: 1px solid black;
   border-radius: 50%;
-  transform: translate(-2.5rem, 10rem);
   cursor: pointer;
 }
 
@@ -38,7 +38,7 @@
 
 .qArea {
   border: 1px solid black;
-  width: 24rem;
+  width: 40rem;
   height: 4rem;
   display: flex;
   align-items: center;
@@ -47,13 +47,13 @@
 }
 
 .q {
-  width: 23rem;
+  width: 36rem;
   height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  word-break: normal;
+  word-break: keep-all;
 }
 
 .answer {
@@ -74,5 +74,5 @@
 
 .yes:hover,
 .no:hover {
-  border: 1px solid red;
+  transform: scale(1.01);
 }

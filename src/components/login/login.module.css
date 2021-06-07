@@ -5,6 +5,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #07185e;
+  z-index: -1;
+}
+
+.title,
+.text {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #263238;
+  z-index: 1;
+}
+
+.text {
+  font-size: 1.5rem;
 }
 
 .input {
@@ -13,13 +28,13 @@
 
 .form {
   margin: 0.5rem 0;
-  border: 1px solid black;
   width: 24rem;
   height: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .input,
@@ -29,8 +44,11 @@
   margin-bottom: 0.5rem;
   text-align: center;
   outline: none;
+  border: none;
   caret-color: black;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  transition: all 100ms ease-in-out;
 }
 
 .input::placeholder {
@@ -41,11 +59,208 @@
 .change::placeholder {
   font-size: 1rem;
   text-align: center;
-  color: red;
+  color: #7eb5ee;
 }
 
 .btn {
-  width: 20.25rem;
+  width: 20rem;
   height: 3rem;
   cursor: pointer;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  background: #7eb5ee;
+  color: white;
+  transition: all 100ms ease-in-out;
+}
+
+.input:hover,
+.change:hover,
+.btn:hover {
+  transform: scale(1.02);
+}
+
+.floating {
+  position: absolute;
+  width: 40rem;
+  height: 40rem;
+  background: linear-gradient(135deg, #e5b8cf, #7eb5ee);
+  border-radius: 35%;
+  /* animation: rotate 30s infinite; */
+  z-index: 0;
+}
+
+.floating::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgb(225, 190, 231, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 40%;
+  animation: rotate 30s infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.i,
+.e,
+.s,
+.n,
+.f,
+.t,
+.j,
+.p {
+  position: absolute;
+  font-size: 2rem;
+  background-color: white;
+  width: 4rem;
+  height: 2rem;
+  padding: 0.7rem 0 1.3rem 0;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.i {
+  transform: translate(-30rem, -5rem);
+  background-color: #e5b8cf;
+  animation: i 10s infinite;
+  animation-direction: alternate;
+}
+
+.s {
+  transform: translate(-40rem, -5rem);
+  background-color: #e5b8cf;
+  animation: s 10s infinite;
+  animation-direction: alternate;
+}
+
+.f {
+  transform: translate(-40rem, 5rem);
+  background-color: #e5b8cf;
+  animation: f 10s infinite;
+  animation-direction: alternate;
+}
+
+.j {
+  transform: translate(-30rem, 5rem);
+  background-color: #e5b8cf;
+  animation: j 10s infinite;
+  animation-direction: alternate;
+}
+
+.e {
+  transform: translate(30rem, -5rem);
+  background-color: #e5b8cf;
+  animation: e 10s infinite;
+  animation-direction: alternate;
+}
+
+.n {
+  transform: translate(40rem, -5rem);
+  background-color: #e5b8cf;
+  animation: n 10s infinite;
+  animation-direction: alternate;
+}
+
+.t {
+  transform: translate(40rem, 5rem);
+  background-color: #e5b8cf;
+  animation: t 10s infinite;
+  animation-direction: alternate;
+}
+
+.p {
+  transform: translate(30rem, 5rem);
+  background-color: #e5b8cf;
+  animation: p 10s infinite;
+  animation-direction: alternate;
+}
+
+@keyframes i {
+  from {
+    transform: translate(-30rem, -5rem);
+  }
+
+  to {
+    transform: translate(-40rem, -5rem);
+  }
+}
+
+@keyframes e {
+  from {
+    transform: translate(30rem, -5rem);
+  }
+
+  to {
+    transform: translate(30rem, 5rem);
+  }
+}
+
+@keyframes s {
+  from {
+    transform: translate(-40rem, -5rem);
+  }
+
+  to {
+    transform: translate(-40rem, 5rem);
+  }
+}
+
+@keyframes n {
+  from {
+    transform: translate(40rem, -5rem);
+  }
+
+  to {
+    transform: translate(30rem, -5rem);
+  }
+}
+@keyframes f {
+  from {
+    transform: translate(-40rem, 5rem);
+  }
+
+  to {
+    transform: translate(-30rem, 5rem);
+  }
+}
+
+@keyframes t {
+  from {
+    transform: translate(40rem, 5rem);
+  }
+
+  to {
+    transform: translate(40rem, -5rem);
+  }
+}
+
+@keyframes j {
+  from {
+    transform: translate(-30rem, 5rem);
+  }
+
+  to {
+    transform: translate(-30rem, -5rem);
+  }
+}
+
+@keyframes p {
+  from {
+    transform: translate(30rem, 5rem);
+  }
+
+  to {
+    transform: translate(40rem, 5rem);
+  }
 }
