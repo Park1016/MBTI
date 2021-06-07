@@ -22,7 +22,7 @@ let previousTotalNum = 0;
 
 
 
-const Question = memo(({id, questions, mbtiTypes, progressBar}) => {
+const Question = memo(({id, questions, mbtiTypes, progressBar, btn}) => {
 
     let [mbtiType, setMbtiType] = useState([]); 
     const qArray = Object.values(questions.q);
@@ -31,7 +31,6 @@ const Question = memo(({id, questions, mbtiTypes, progressBar}) => {
     const ul = useRef();
     const prev = useRef();
     const next = useRef();
-
 
     const onPlusNum = () => {
         num = num+dynamicNum;
@@ -45,6 +44,9 @@ const Question = memo(({id, questions, mbtiTypes, progressBar}) => {
     const onAnswer = (e, type) => {   
         if(num == 80){
             return;
+        }
+        if(num == 79){
+            btn.style.backgroundColor = 'red';
         }
         onPlusBtnNum();
         switch (type[0]) {
@@ -195,6 +197,7 @@ const Question = memo(({id, questions, mbtiTypes, progressBar}) => {
         ul.current.style.display = 'none';
         ul.current.nextElementSibling.style.display='block';    
     }
+
 
     useEffect(()=>{
         numOfI = 0;

@@ -11,7 +11,6 @@ let resultType = '';
 let resultArr = [];
 
 
-
 const Questions = memo(({questions}) => {
     
     const history = useHistory();
@@ -30,9 +29,9 @@ const Questions = memo(({questions}) => {
     const [f, setF] = useState(0); 
     const [j, setJ] = useState(0); 
     const [p, setP] = useState(0);
-
-    const allQuestions = useRef();
     const [bar, setBar] = useState(0);
+
+    const btn = useRef();
 
     const progressBar = (value) => {
         setBar(value);
@@ -98,6 +97,24 @@ const Questions = memo(({questions}) => {
         resultArr = [i,e,n,s,t,f,j,p];     
     }
 
+    const onCheck = () => {
+        if(bar !== 80){
+            let cf = window.confirm("아직 체크하지 않은 항목이 있습니다. \n결과보기로 넘어가시겠습니까?");
+            if(cf == false){
+                return;
+            }
+        }
+        history.push({
+            pathname: '../result/result',
+            state: {
+                name: location.state.name,
+                resultType: resultType,
+                resultArr: resultArr
+            }
+        });
+    }
+
+
     // let getData = (resultTypeParam, resultArrParam) => {
     //     if(resultTypeParam === undefined){
     //         return;
@@ -118,7 +135,6 @@ const Questions = memo(({questions}) => {
     //     resultArr1 = await obj;
     // }
 
-    const allUl = allQuestions.current;
 
     // console.log(resultArr);
     // console.log(resultType);
@@ -127,12 +143,11 @@ const Questions = memo(({questions}) => {
         <section className={styles.container}>
             <Header />
             <section className={styles.contents}>    
-                <section>
+                <section >
                     <ProgressBar progressBar={bar}/>
                 </section>
                 <section
                     className={styles.allQuestions} 
-                    ref={allQuestions}
                     > 
                     {questions.map((question, index) =>
                     <Question
@@ -142,18 +157,12 @@ const Questions = memo(({questions}) => {
                         questions={question}
                         mbtiTypes={onMbtiTypes}   
                         progressBar={progressBar}
+                        btn={btn.current}
                     />)}
                 </section>
                 <div className={styles.btnArea}>
-                    <button className={styles.btn} onClick={()=>{
-                        history.push({
-                            pathname: '../result/result',
-                            state: {
-                                name: location.state.name,
-                                resultType: resultType,
-                                resultArr: resultArr
-                            }
-                        });
+                    <button ref={btn} className={styles.btn} onClick={()=>{
+                        onCheck();
                     }}>결과보기</button>
                 </div>
             </section>
