@@ -160,28 +160,28 @@
 
 .e {
   transform: translate(30rem, -5rem);
-  background-color: #e5b8cf;
+  background-color: #7eb5ee;
   animation: e 10s infinite;
   animation-direction: alternate;
 }
 
 .n {
   transform: translate(40rem, -5rem);
-  background-color: #e5b8cf;
+  background-color: #7eb5ee;
   animation: n 10s infinite;
   animation-direction: alternate;
 }
 
 .t {
   transform: translate(40rem, 5rem);
-  background-color: #e5b8cf;
+  background-color: #7eb5ee;
   animation: t 10s infinite;
   animation-direction: alternate;
 }
 
 .p {
   transform: translate(30rem, 5rem);
-  background-color: #e5b8cf;
+  background-color: #7eb5ee;
   animation: p 10s infinite;
   animation-direction: alternate;
 }

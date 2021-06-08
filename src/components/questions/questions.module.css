@@ -43,8 +43,9 @@ ul {
 }
 
 .btn {
-  width: 4rem;
-  height: 1.5rem;
+  width: 40rem;
+  height: 3rem;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
   border: none;
   border-radius: 10px;
