@@ -95,7 +95,6 @@ const Questions = memo(({questions, results}) => {
     }
 
     const onMove = () => {
-        console.log(resultText);
         history.push({
         pathname: '../result/result',
         state: {
