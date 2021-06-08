@@ -44,7 +44,7 @@ const App = memo(({LoadData}) => {
 
       fetch("/src/data/mbti.json", requestOptions)
       .then(response => response.json()) 
-      .then(result => setResult(result.resultList))
+      .then(result => setResult(result.resultsList))
       .catch(error => console.log('error', error)); 
       
       // fetch("http://localhost:3007/resultsList", requestOptions)
