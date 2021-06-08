@@ -1,11 +1,10 @@
 ﻿.container {
-  border: 1px solid black;
   width: 40rem;
-  height: 24rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0;
 }
 
 .chevron {
@@ -20,10 +19,8 @@
 .prev,
 .next {
   width: 2rem;
-  height: 1rem;
   text-align: center;
   padding: 0.35rem 0 0.65rem 0;
-  border: 1px solid black;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -33,13 +30,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 5rem;
+  height: 15rem;
 }
 
 .qArea {
-  border: 1px solid black;
   width: 40rem;
-  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,7 +43,8 @@
 
 .q {
   width: 36rem;
-  height: 3rem;
+  font-weight: bold;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,21 +54,26 @@
 
 .answer {
   display: flex;
-  flex-direction: column;
-  height: 5rem;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 12.5rem;
 }
 
 .yes,
 .no {
-  width: 4rem;
-  height: 1.5rem;
-  margin-bottom: 0.5rem;
+  width: 6rem;
+  height: 2rem;
+  font-size: 1rem;
+  font-weight: bold;
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  background-color: #fce4ec;
+  transition: all 100ms ease-in-out;
 }
 
 .yes:hover,
 .no:hover {
   transform: scale(1.01);
+  background-color: #ffc1e3;
 }

@@ -31,22 +31,24 @@ const Question = memo(({id, questions, mbtiTypes, progressBar, btn}) => {
     const ul = useRef();
     const prev = useRef();
     const next = useRef();
+    const yesBtn = useRef();
+    const noBtn = useRef();
 
     const onPlusNum = () => {
         num = num+dynamicNum;
         progressBar(num);
     }
 
-    const onPlusBtnNum = (e) => {
+    const onPlusBtnNum = () => {
         btnNum = num+dynamicNum;
     }
 
-    const onAnswer = (e, type) => {   
+    const onAnswer = (type) => {   
         if(num == 80){
             return;
         }
         if(num == 79){
-            btn.style.backgroundColor = '#e5b8cf';
+            btn.style.backgroundColor = '#ffc1e3';
         }
         onPlusBtnNum();
         switch (type[0]) {
@@ -54,58 +56,48 @@ const Question = memo(({id, questions, mbtiTypes, progressBar, btn}) => {
                 numOfI++;
                 IE.I = numOfI;
                 setMbtiType(IE); 
-                // mbtiTypes(mbtiType);
-                // console.log(IE);
                 onPlusNum();              
                 break;
             case 'E' :
                 numOfE++;
                 IE.E = numOfE;
                 setMbtiType(IE);
-                // mbtiTypes(mbtiType);
-                // console.log(IE);
                 onPlusNum();
                 break;
             case 'N' :
                 numOfN++;
                 NS.N = numOfN;
                 setMbtiType(NS);               
-                // console.log(NS);
                 onPlusNum();
                 break;
             case 'S' :
                 numOfS++;
                 NS.S = numOfS;
                 setMbtiType(NS);
-                // console.log(NS);
                 onPlusNum();
                 break;
             case 'T' :
                 numOfT++;
                 TF.T = numOfT;
                 setMbtiType(TF);               
-                // console.log(TF);
                 onPlusNum();
                 break;
             case 'F' :
                 numOfF++;
                 TF.F = numOfF;
                 setMbtiType(TF);
-                // console.log(TF);
                 onPlusNum();
                 break;
             case 'J' :
                 numOfJ++;
                 JP.J = numOfJ;
-                setMbtiType(JP);               
-                // console.log(JP);
+                setMbtiType(JP);              
                 onPlusNum();
                 break;
             case 'P' :
                 numOfP++;
                 JP.P = numOfP;
                 setMbtiType(JP);
-                // console.log(JP);
                 onPlusNum();
                 break;
             default : console.log('답변에 맞는 유형을 찾지 못했습니다');
@@ -113,8 +105,8 @@ const Question = memo(({id, questions, mbtiTypes, progressBar, btn}) => {
     }
 
 
-    const onTotal = (e, type) => {
-        onAnswer(e, type);
+    const onTotal = (e ,type) => {
+        onAnswer(type);
         onMove(e);
     }
 
@@ -198,6 +190,12 @@ const Question = memo(({id, questions, mbtiTypes, progressBar, btn}) => {
         ul.current.nextElementSibling.style.display='block';    
     }
 
+    const onYNMove = () => {
+        if(num == 80){
+            yesBtn.current.style.cursor = 'not-allowed';
+            noBtn.current.style.cursor = 'not-allowed';
+        }
+    }
 
     useEffect(()=>{
         numOfI = 0;
@@ -233,21 +231,31 @@ const Question = memo(({id, questions, mbtiTypes, progressBar, btn}) => {
 
     return (
         <ul id={id} className={styles.container} ref={ul}>
-            <li className={styles.chevron}>
+            {/* <li className={styles.chevron}>
                 <div className={styles.prev} onMouseOver={onPreviousMouse} onClick={(e)=>onPreviousBtn(e)}>
                     <i ref={prev} onMouseOver={onPreviousMouse} onClick={(e)=>onPreviousNext(e)} className="fas fa-chevron-left"></i>
                 </div>
                 <div className={styles.next} onMouseOver={onNextMouse} onClick={(e)=>onNextBtn(e)}>
                     <i ref={next} onMouseOver={onNextMouse} onClick={(e)=>onPreviousNext(e)} className="fas fa-chevron-right"></i>
                 </div>
-            </li>
+            </li> */}
             <li className={styles.contents}>
                 <div className={styles.qArea}>
                   <div className={styles.q}>{q}</div>
                 </div>
                 <div className={styles.answer}>
-                    <button className={styles.yes} onClick={(e)=>onTotal(e,a[0].type)} >{a[0].answer}</button>
-                    <button className={styles.no} onClick={(e)=>onTotal(e,a[1].type)} >{a[1].answer}</button>
+                    <button 
+                        ref={yesBtn} 
+                        className={styles.yes}
+                        onMouseMove={onYNMove}
+                        onClick={(e)=>onTotal(e,a[0].type)} >{a[0].answer}
+                    </button>
+                    <button 
+                        ref={noBtn} 
+                        className={styles.no}
+                        onMouseMove={onYNMove} 
+                        onClick={(e)=>onTotal(e,a[1].type)} >{a[1].answer}
+                    </button>
                 </div>
             </li>
         </ul>

@@ -5,23 +5,12 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import { useHistory, useLocation } from 'react-router';
 
-const Result = memo(({results}) => {
+const Result = memo((props) => {
     const history = useHistory();
     const location = useLocation();
-    const [resultText, setResultText] = useState('');
     let type = location.state.resultType;
     let arr = location.state.resultArr;
-
-    // console.log(location.state.resultType);
-    // console.log(arr);
-
-    useEffect(() =>{
-        results.map((result)=>{
-            if(result.types == location.state.resultType){
-                setResultText(result.desc);
-            }
-        })
-    },[])
+    let resultText = location.state.resultText;
 
     const [barData, setBarData] = useState({
         labels: ['I', 'E', 'N', 'S', 'T', 'F', 'J', 'P'],
@@ -75,27 +64,33 @@ const Result = memo(({results}) => {
 
     return (
             <section className={styles.container}>
-            <Header />
+            {/* <Header /> */}
             <div className={styles.content}>
                 {/* <p className={styles.p1}>{location.state.name} 님의 성격유형 검사</p> */}
-                <p className={styles.p2}>{location.state.name} 님은 {location.state.resultType} 입니다.</p>
+                <div className={styles.titleTotal}>
+                    <span className={styles.p2}>{location.state.name} 님은</span>
+                    <span className={styles.resultType}>
+                        {location.state.resultType ? location.state.resultType : '알 수 없는 유형'}
+                    </span>
+                    <span className={styles.p2}>입니다.</span>
+                </div>
                 <div className={styles.bar}>
                 <Bar
                     data={barData}
-                    // style={width='50vw', height='20vh'}
                     width={530}
                     height={200}
                     options={barOptions.options}
+                    className={styles.realBar}
                 />
                 </div>
-                <div className={styles.text}>
+                <div className={styles.textArea}>
                     <div className={styles.left}>
                         <i className="fas fa-quote-left"></i>
                     </div>
                     <div className={styles.right}>
                         <i className="fas fa-quote-right"></i>
                     </div>
-                    <p>{resultText}</p>
+                    <p className={styles.text}>{resultText ? resultText : '항목을 다 체크하지 않으셨군요!'}</p>
                 </div>
                 <div className={styles.btnArea}>
                     <button className={styles.btn} onClick={()=>{
@@ -104,7 +99,7 @@ const Result = memo(({results}) => {
                     }}>다시하기</button>
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </section>
     )
     })

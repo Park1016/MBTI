@@ -2,6 +2,7 @@
 .content,
 .p1,
 .p2,
+.resultType,
 .bar,
 .text,
 .btnArea {
@@ -14,21 +15,55 @@
 .container {
   width: 100vw;
   height: 100vh;
+  background: linear-gradient(135deg, #e5b8cf, #7eb5ee);
 }
 
 .content {
   margin: 0.5rem 0;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 40rem;
-  height: 35rem;
+  height: 40rem;
+  background: white;
+  border-radius: 10px;
+  /* box-shadow: 5px 5px 10px #bdbdbd; */
 }
 
 /* .p1 {
   height: 3rem;
 } */
 
+.titleTotal {
+  display: flex;
+  flex-direction: row;
+}
+
 .p2 {
-  height: 4rem;
+  height: 5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #576071;
+  margin-top: 0.5rem;
+}
+
+.resultType {
+  height: 5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e2a942;
+  margin: 0.5rem 0.5rem 0 1rem;
+  animation: resultType 1s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+}
+
+@keyframes resultType {
+  from {
+    transform: translate(0, -5rem);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
 }
 
 .bar {
@@ -36,20 +71,70 @@
   height: 15rem;
 }
 
-.text {
+.textArea {
   width: 28rem;
-  height: 10rem;
-  margin-bottom: 2rem;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transform: translateY(-1.5rem);
+  word-break: normal;
+  /* letter-spacing: 0.02rem; */
+  word-spacing: 0.1rem;
+  line-height: 1.5rem;
+  animation: text 3s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+}
+
+@keyframes text {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .btnArea {
-  height: 4rem;
+  margin-top: 2rem;
 }
 
 .left {
-  transform: translate(-16rem, 1rem);
+  transform: translate(-16rem, 2.2rem);
+  color: #f8a4d2;
 }
 
 .right {
-  transform: translateX(16rem);
+  transform: translate(16rem, 0.7rem);
+  color: #f8a4d2;
+}
+
+.text {
+  background-color: #f3e5f5;
+  width: 28rem;
+  height: 15rem;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #bdbdbd;
+  word-break: normal;
+}
+
+.btn {
+  background-color: #f8a4d2;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 40rem;
+  height: 3.5rem;
+  border: none;
+  border-radius: 0 0 10px 10px;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+
+.btn:hover {
+  background-color: #ecc478;
 }

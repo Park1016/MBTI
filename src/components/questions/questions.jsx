@@ -1,4 +1,4 @@
-﻿import React, {useRef, useState, memo} from 'react';
+﻿import React, {useRef, useState, memo, useEffect} from 'react';
 import { useHistory, useLocation } from 'react-router';
 import Footer from '../footer/footer';
 import Header from '../header/header';
@@ -9,9 +9,10 @@ import styles from './questions.module.css';
 
 let resultType = '';
 let resultArr = [];
+let resultText = '';
 
 
-const Questions = memo(({questions}) => {
+const Questions = memo(({questions, results}) => {
     
     const history = useHistory();
     const location = useLocation();
@@ -32,6 +33,9 @@ const Questions = memo(({questions}) => {
     const [bar, setBar] = useState(0);
 
     const btn = useRef();
+    const alert = useRef();
+    const yes = useRef();
+    const no = useRef();
 
     const progressBar = (value) => {
         setBar(value);
@@ -90,6 +94,20 @@ const Questions = memo(({questions}) => {
         onResult();
     }
 
+    const onMove = () => {
+        console.log(resultText);
+        history.push({
+        pathname: '../result/result',
+        state: {
+            name: location.state.name,
+            resultType: resultType,
+            resultArr: resultArr, 
+            resultText: resultText
+        }
+        });
+    }
+
+
     const onResult = () => {   
         let concat1 = IE.concat(NS);
         let concat2 = concat1.concat(TF);
@@ -97,24 +115,40 @@ const Questions = memo(({questions}) => {
         resultArr = [i,e,n,s,t,f,j,p];     
     }
 
-    const onCheck = () => {
-        if(bar !== 80){
-            let cf = window.confirm("아직 체크하지 않은 항목이 있습니다. \n결과보기로 넘어가시겠습니까?");
-            if(cf == false){
-                return;
-            }
+    const onYNBtn = (e) => {
+        const target = e.target;
+        if(target == yes.current){
+            onMove();
         }
-        history.push({
-            pathname: '../result/result',
-            state: {
-                name: location.state.name,
-                resultType: resultType,
-                resultArr: resultArr
-            }
-        });
+        if(target == no.current){
+            alert.current.style.display = 'none';
+        }
     }
 
+    const onAlert = () => {
+        alert.current.style.display = 'flex';
+    }
 
+    const onCheck = () => {
+        results.map((result)=>{
+            if(result.types == resultType){
+                console.log(result.desc);
+                resultText = result.desc;
+            }
+        })
+
+
+        if(bar !== 80){
+            onAlert();
+            return;
+        }
+        onMove();
+    }
+
+    useEffect(()=>{
+        resultType = '';
+        resultArr = [];
+    },[])
     // let getData = (resultTypeParam, resultArrParam) => {
     //     if(resultTypeParam === undefined){
     //         return;
@@ -141,7 +175,21 @@ const Questions = memo(({questions}) => {
     
     return (
         <section className={styles.container}>
-            <Header />
+            <div ref={alert} className={styles.alertContainer}>
+                <div className={styles.alert}>
+                    <div className={styles.i}>
+                        <i className="fas fa-exclamation-circle"></i>
+                    </div>
+                    <p className={styles.alertText}>
+                        아직 체크하지 않은 항목이 있습니다.<br />결과보기로 넘어가시겠습니까?
+                    </p>
+                    <div className={styles.alertBtnArea}>
+                        <button ref={yes} className={styles.alertYesBtn} onClick={(e)=>onYNBtn(e)}>예</button>
+                        <button ref={no} className={styles.alertNoBtn} onClick={(e)=>onYNBtn(e)}>아니오</button>
+                    </div>
+                </div>
+            </div>
+            {/* <Header /> */}
             <section className={styles.contents}>    
                 <section >
                     <ProgressBar progressBar={bar}/>
@@ -166,7 +214,7 @@ const Questions = memo(({questions}) => {
                     }}>결과보기</button>
                 </div>
             </section>
-            <Footer />
+            {/* <Footer /> */}
         </section>
     )
 })
