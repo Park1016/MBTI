@@ -62,6 +62,12 @@ const Result = memo((props) => {
         arr = [];
     }
 
+    // useEffect(()=>{
+    //     if(location.reload(true)){
+    //         <Redirect to="/questions/questions" />
+    //     }
+    // })
+
     return (
             <section className={styles.container}>
             {/* <Header /> */}
