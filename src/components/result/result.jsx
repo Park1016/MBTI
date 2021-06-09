@@ -13,7 +13,7 @@ const Result = memo((props) => {
     let resultText = location.state.resultText;
 
     const [barData, setBarData] = useState({
-        labels: ['I', 'E', 'N', 'S', 'T', 'F', 'J', 'P'],
+        labels: ['내향 I ', '외향 E ', '직관 N ', '감각 S ', '사고 T ', '감정 F ', '판단 J ', '인식 P '],
         datasets: [
             {
                 label: 'mbti 결과',
