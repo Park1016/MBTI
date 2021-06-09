@@ -17,4 +17,4 @@ class LoadData{
 
 const loadData = new LoadData();
 
-export default loadData;
+// export default loadData;

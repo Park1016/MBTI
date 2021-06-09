@@ -5,20 +5,16 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/login/login';
 import Questions from './components/questions/questions';
 import Result from './components/result/result';
+import json from './data/mbti.json';
 
-const App = memo(({loadData}) => {
+const App = memo((props) => {
   
   const [questions, setQuestions] = useState([]);
   const [result, setResult] = useState([]);
     
   useEffect(() => { 
-      loadData.loadQuestion()
-      .then(result => setQuestions(result.questionList))
-      .catch(error => console.log('error', error));  
-
-      loadData.loadAnswer()
-      .then(result => setResult(result.resultsList))
-      .catch(error => console.log('error', error)); 
+      setQuestions(json.questionList);
+      setResult(json.resultsList);
   },[]) 
 
   return (

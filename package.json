@@ -10,6 +10,8 @@
     "chart.js": "^3.3.2",
     "firebase": "^8.6.3",
     "global": "^4.4.0",
+    "http-proxy-middleware": "^0.19.1",
+    "json-server": "^0.16.3",
     "react": "^17.0.2",
     "react-chartjs-2": "^3.0.3",
     "react-dom": "^17.0.2",
@@ -17,10 +19,6 @@
     "react-scripts": "4.0.3",
     "uuid": "^8.3.2",
     "web-vitals": "^1.0.1"
-  },
-
-  "devDependencies": {
-    "json-server": "^0.16.3"
   },
   "scripts": {
     "build": "react-scripts build",
@@ -30,7 +28,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -49,5 +46,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy" : "http://127.0.0.1:8000"
+  "proxy": "http://127.0.0.1:8000"
 }
