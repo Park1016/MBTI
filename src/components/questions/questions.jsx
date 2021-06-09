@@ -147,6 +147,7 @@ const Questions = memo(({questions, results}) => {
     useEffect(()=>{
         resultType = '';
         resultArr = [];
+        resultText = '';
     },[])
     // let getData = (resultTypeParam, resultArrParam) => {
     //     if(resultTypeParam === undefined){
