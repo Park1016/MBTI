@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 const Login = (props) => {
     const history = useHistory();
     let [change, setChange] = useState(false);
- 
+
     const onForm = (e) => {
         e.preventDefault();
     }
@@ -25,8 +25,7 @@ const Login = (props) => {
         history.push({
             pathname: '../questions/questions',
             state: {name: name},
-        });
-        // target.previousElementSibling.value = '';        
+        }); 
     }
 
     const onKeyDown = (e) => {
@@ -50,7 +49,7 @@ const Login = (props) => {
             <p className={styles.title}>MBTI 테스트</p>
             <form className={styles.form} onSubmit={(e)=>onForm(e)}>
                 <input
-                    maxlength='6'
+                    maxLength='6'
                     onKeyDown={(e)=>onKeyDown(e)}
                     className={change ? styles.change : styles.input}
                     placeholder='이름을 입력하세요'

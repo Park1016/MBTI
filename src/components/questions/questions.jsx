@@ -131,7 +131,6 @@ const Questions = memo(({questions, results}) => {
     const onCheck = () => {
         results.map((result)=>{
             if(result.types == resultType){
-                console.log(result.desc);
                 resultText = result.desc;
             }
         })
@@ -149,29 +148,7 @@ const Questions = memo(({questions, results}) => {
         resultArr = [];
         resultText = '';
     },[])
-    // let getData = (resultTypeParam, resultArrParam) => {
-    //     if(resultTypeParam === undefined){
-    //         return;
-    //     }
-    //     else{
-    //         let resultType = resultTypeParam;
-    //         let resultArr = resultArrParam;
-    //         console.log(resultType, resultArr);
-    //         return {resultTypeKey:resultType, resultArrKey:resultArr};
-    //     }
-    // }
 
-    // async function getData(type, obj) {
-    //     if(type===undefined){
-    //         return;
-    //     }
-    //     resultType1 = await type;
-    //     resultArr1 = await obj;
-    // }
-
-
-    // console.log(resultArr);
-    // console.log(resultType);
     
     return (
         <section className={styles.container}>
@@ -189,10 +166,10 @@ const Questions = memo(({questions, results}) => {
                     </div>
                 </div>
             </div>
-            {/* <Header /> */}
             <section className={styles.contents}>    
                 <section >
                     <ProgressBar progressBar={bar}/>
+                    <Header name={location.state.name}/>
                 </section>
                 <section
                     className={styles.allQuestions} 

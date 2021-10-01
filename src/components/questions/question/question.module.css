@@ -77,3 +77,34 @@
   transform: scale(1.01);
   background-color: #ffc1e3;
 }
+
+@media screen and (max-width: 660px) {
+  .container,
+  .qArea {
+    width: 30rem;
+  }
+  .q {
+    width: 26rem;
+    word-break: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container,
+  .qArea {
+    width: 25rem;
+  }
+  .q {
+    width: 21rem;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .container,
+  .qArea {
+    width: 20rem;
+  }
+  .q {
+    width: 16rem;
+  }
+}

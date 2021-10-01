@@ -105,11 +105,13 @@
 .left {
   transform: translate(-16rem, 2.2rem);
   color: #f8a4d2;
+  z-index: 10;
 }
 
 .right {
   transform: translate(16rem, 0.7rem);
   color: #f8a4d2;
+  z-index: 10;
 }
 
 .text {
@@ -137,4 +139,56 @@
 
 .btn:hover {
   background-color: #ecc478;
+}
+
+@media screen and (max-width: 650px) {
+  .content,
+  .btn {
+    width: 30rem;
+  }
+  .text,
+  .textArea {
+    width: 20rem;
+    font-size: 0.9rem;
+    transform: translateY(-1.5rem);
+  }
+  .bar {
+    transform: translateY(-1rem);
+  }
+  .left {
+    transform: translate(-12rem, 1rem);
+  }
+  .right {
+    transform: translate(12rem, -0.5rem);
+  }
+  .p2,
+  .resultType {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .content,
+  .btn {
+    width: 25rem;
+  }
+  .text,
+  .textArea {
+    width: 15rem;
+    font-size: 0.8rem;
+    transform: translateY(-2rem);
+  }
+  .bar {
+    transform: translateY(-1.5rem);
+  }
+  .left {
+    transform: translate(-9.5rem, 0.4rem);
+  }
+  .right {
+    transform: translate(9.5rem, -1rem);
+  }
+  .p2,
+  .resultType {
+    font-size: 1.2rem;
+  }
 }

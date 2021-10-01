@@ -241,7 +241,7 @@ const Question = memo(({id, questions, mbtiTypes, progressBar, btn}) => {
             </li> */}
             <li className={styles.contents}>
                 <div className={styles.qArea}>
-                  <div className={styles.q}>{q}</div>
+                <div className={styles.q}>{q}</div>
                 </div>
                 <div className={styles.answer}>
                     <button 

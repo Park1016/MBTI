@@ -147,3 +147,42 @@ ul {
 .alertNoBtn:hover {
   background-color: #f8a4d2;
 }
+
+@media screen and (max-width: 660px) {
+  .contents,
+  .btn,
+  .btnArea,
+  .allQuestions {
+    width: 30rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .contents,
+  .btn,
+  .btnArea,
+  .allQuestions {
+    width: 25rem;
+  }
+  .alert {
+    width: 23rem;
+  }
+  .alertText {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .contents,
+  .btn,
+  .btnArea,
+  .allQuestions {
+    width: 20rem;
+  }
+  .alert {
+    width: 18rem;
+  }
+  .alertText {
+    font-size: 1rem;
+  }
+}

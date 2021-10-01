@@ -86,7 +86,6 @@
   height: 40rem;
   background: linear-gradient(135deg, #e5b8cf, #7eb5ee);
   border-radius: 35%;
-  /* animation: rotate 30s infinite; */
   z-index: 0;
 }
 
@@ -124,64 +123,75 @@
   font-size: 2rem;
   background-color: white;
   width: 4rem;
-  height: 2rem;
-  padding: 0.7rem 0 1.3rem 0;
+  height: 4rem;
+  line-height: 4rem;
   border-radius: 50%;
   text-align: center;
+  text-shadow: 1px 1px 2px black;
+}
+
+.i,
+.s,
+.f,
+.j {
+  background-color: #e5b8cf;
+  color: #ec5da7;
+  font-weight: bold;
+}
+
+.e,
+.n,
+.t,
+.p {
+  background-color: #7eb5ee;
+  color: #1980ee;
+  font-weight: bold;
 }
 
 .i {
   transform: translate(-30rem, -5rem);
-  background-color: #e5b8cf;
   animation: i 10s infinite;
   animation-direction: alternate;
 }
 
 .s {
   transform: translate(-40rem, -5rem);
-  background-color: #e5b8cf;
   animation: s 10s infinite;
   animation-direction: alternate;
 }
 
 .f {
   transform: translate(-40rem, 5rem);
-  background-color: #e5b8cf;
   animation: f 10s infinite;
   animation-direction: alternate;
 }
 
 .j {
   transform: translate(-30rem, 5rem);
-  background-color: #e5b8cf;
   animation: j 10s infinite;
   animation-direction: alternate;
 }
 
 .e {
   transform: translate(30rem, -5rem);
-  background-color: #7eb5ee;
   animation: e 10s infinite;
   animation-direction: alternate;
 }
 
 .n {
   transform: translate(40rem, -5rem);
-  background-color: #7eb5ee;
   animation: n 10s infinite;
   animation-direction: alternate;
 }
 
 .t {
   transform: translate(40rem, 5rem);
-  background-color: #7eb5ee;
   animation: t 10s infinite;
   animation-direction: alternate;
 }
 
 .p {
   transform: translate(30rem, 5rem);
-  background-color: #7eb5ee;
   animation: p 10s infinite;
   animation-direction: alternate;
 }
@@ -262,5 +272,46 @@
 
   to {
     transform: translate(40rem, 5rem);
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .i,
+  .e,
+  .s,
+  .n,
+  .f,
+  .t,
+  .j,
+  .p {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .floating {
+    width: 30rem;
+    height: 30rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .floating {
+    width: 20rem;
+    height: 30rem;
+    border-radius: 30px;
+  }
+  .floating::before {
+    display: none;
+  }
+  .input,
+  .change,
+  .btn {
+    width: 15rem;
+  }
+  .btn {
+    background: #e5b8cf;
+    font-weight: bold;
+    color: #81124b;
   }
 }

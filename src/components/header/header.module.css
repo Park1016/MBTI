@@ -1,1 +1,68 @@
-﻿
+﻿/* @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Carter+One&family=Dancing+Script:wght@700&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Carter+One&family=Dancing+Script:wght@700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Suez+One&display=swap");
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(0rem);
+  margin-top: 5rem;
+  /* font-family: "Dancing Script", cursive; */
+  /* font-family: "Carter One", cursive; */
+  /* font-family: "Viga", sans-serif; */
+  font-family: "Suez One", serif;
+}
+
+.header li {
+  width: 3rem;
+  height: 3rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 3;
+  transform-style: preserve-3d;
+  animation: up 7s infinite;
+  animation-direction: normal;
+  border-radius: 50%;
+}
+
+.header li:nth-child(1) {
+  background: #fccfcc;
+  color: #f76e64;
+  animation-delay: 0ms;
+}
+
+.header li:nth-child(2) {
+  background: #f4e8cf;
+  color: #f8ac09;
+  animation-delay: 1s;
+}
+
+.header li:nth-child(3) {
+  background: #f3ccaa;
+  color: #fa8a28;
+  animation-delay: 2s;
+}
+
+.header li:nth-child(4) {
+  background: #f4d8dd;
+  color: rgb(247, 147, 59);
+  animation-delay: 3s;
+}
+
+@keyframes up {
+  from {
+    transform: translateY(0rem);
+  }
+  10% {
+    transform: translateY(-0.5rem);
+  }
+  25% {
+    transform: translateY(0rem);
+  }
+  to {
+    transform: translateY(0rem);
+  }
+}

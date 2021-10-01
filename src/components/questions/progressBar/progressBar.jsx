@@ -2,7 +2,6 @@
 import styles from './progressBar.module.css'
 
 const ProgressBar = (({progressBar}) => {
-    // console.log(progressBar);
     const bar = useRef();
     const onBar = () => {
         bar.current.style.width = `calc(${progressBar}*1.25%)`;
@@ -12,10 +11,10 @@ const ProgressBar = (({progressBar}) => {
     })
     return (
         <section className={styles.container}>
-            <p className={styles.text}>{`${progressBar}/80`}</p>
             <div className={styles.bar}>
                 <div className={styles.fill} ref={bar}></div>
             </div>
+            <p className={styles.text}>{`${progressBar}/80`}</p>
         </section>
     )
 })
