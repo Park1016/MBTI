@@ -172,20 +172,23 @@
   .btn {
     width: 25rem;
   }
+  .content {
+    height: 35rem;
+  }
   .text,
   .textArea {
     width: 15rem;
     font-size: 0.8rem;
-    transform: translateY(-2rem);
+    transform: translateY(-0.5rem);
   }
   .bar {
-    transform: translateY(-1.5rem);
+    transform: translateY(-0.8rem);
   }
   .left {
-    transform: translate(-9.5rem, 0.4rem);
+    transform: translate(-9.5rem, 1.6rem);
   }
   .right {
-    transform: translate(9.5rem, -1rem);
+    transform: translate(9.5rem, 0.2rem);
   }
   .p2,
   .resultType {

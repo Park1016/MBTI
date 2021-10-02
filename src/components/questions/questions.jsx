@@ -134,8 +134,6 @@ const Questions = memo(({questions, results}) => {
                 resultText = result.desc;
             }
         })
-
-
         if(bar !== 80){
             onAlert();
             return;
