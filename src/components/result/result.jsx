@@ -41,14 +41,14 @@ const Result = memo((props) => {
                 setS(false);
                 setM(true);
             } 
-            // if(section.current.clientWidth < 500.1) {
-            //     if(s){
-            //         return;
-            //     }
-            //     setL(false);
-            //     setM(false);
-            //     setS(true);
-            // }
+            if(section.current.clientWidth < 500.1) {
+                if(s){
+                    return;
+                }
+                setL(false);
+                setM(false);
+                setS(true);
+            }
             if(section.current.clientWidth < 100){
                 return;
             }
@@ -122,28 +122,30 @@ const Result = memo((props) => {
     }, []);
 
     return (
-            <section ref={section} className={styles.container}>
+        <section ref={section} className={styles.container}>
             {/* <Header /> */}
-            <div className={styles.content}>
+            <ul className={styles.content}>
                 {/* <p className={styles.p1}>{location.state.name} 님의 성격유형 검사</p> */}
-                <div className={styles.titleTotal}>
+                <li className={styles.titleTotal}>
                     <span className={styles.p2}>{location.state.name} 님은</span>
                     <span className={styles.resultType}>
                         {location.state.resultType ? location.state.resultType : '알 수 없는 유형'}
                     </span>
                     <span className={styles.p2}>입니다.</span>
-                </div>
-                <div className={styles.bar}>
-                <Bar
-                    data={barData}
-                    width={530}
-                    height={200}
-                    options={barOptions.options}
-                    className={styles.realBar}
-                    style={m ? Mstyle : (s ? Sstyle : Lstyle) }
-                />
-                </div>
-                <div className={styles.textArea}>
+                </li>
+                <li className={styles.bar}>
+                    <div>
+                        <Bar
+                            data={barData}
+                            width={530}
+                            height={200}
+                            options={barOptions.options}
+                            className={styles.realBar}
+                            style={m ? Mstyle : (s ? Sstyle : Lstyle) }
+                        />
+                    </div>
+                </li>
+                <li className={styles.textArea}>
                     <div className={styles.left}>
                         <i className="fas fa-quote-left"></i>
                     </div>
@@ -151,15 +153,15 @@ const Result = memo((props) => {
                         <i className="fas fa-quote-right"></i>
                     </div>
                     <p className={styles.text}>{resultText ? resultText : '항목을 다 체크하지 않으셨군요!'}</p>
-                </div>
-                <div className={styles.btnArea}>
+                </li>
+                <li className={styles.btnArea}>
                     <button className={styles.btn} onClick={()=>{
                         onReset();
                         history.push('../login/login');
                     }}>다시하기</button>
-                </div>
-            </div>
-            <Footer />
+                </li>
+            </ul>
+            {/* <Footer /> */}
         </section>
     )
     })

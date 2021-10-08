@@ -16,15 +16,19 @@
   width: 100vw;
   height: 100vh;
   background: linear-gradient(135deg, #e5b8cf, #7eb5ee);
+  overflow: hidden;
 }
 
 .content {
   margin: 0.5rem 0;
   /* border: 1px solid black; */
   width: 40rem;
-  height: 40rem;
+  /* height: 40rem; */
   background: white;
   border-radius: 10px;
+  max-height: 90vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   /* box-shadow: 5px 5px 10px #bdbdbd; */
 }
 
@@ -35,6 +39,7 @@
 .titleTotal {
   display: flex;
   flex-direction: row;
+  padding-top: 0.5rem;
 }
 
 .p2 {
@@ -141,6 +146,21 @@
   background-color: #ecc478;
 }
 
+.content::-webkit-scrollbar {
+  width: 5px;
+}
+.content::-webkit-scrollbar-track {
+  background-color: lightgray;
+}
+.content::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: darkgray;
+}
+.content::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
 @media screen and (max-width: 650px) {
   .content,
   .btn {
@@ -172,9 +192,6 @@
   .btn {
     width: 25rem;
   }
-  .content {
-    height: 35rem;
-  }
   .text,
   .textArea {
     width: 15rem;
@@ -193,5 +210,11 @@
   .p2,
   .resultType {
     font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .content {
+    width: 95vw;
   }
 }
