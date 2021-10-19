@@ -27,6 +27,10 @@ https://hj-mbti.netlify.app
 
 <hr />
 
+#### 시연영상
+
+https://www.youtube.com/watch?v=zHvnPIbFr-k
+
 #### 시작화면
 
 ![mbti-로그인](https://user-images.githubusercontent.com/76847993/136400291-44d2d296-7df1-4458-a7fb-b1065c8418dc.gif)
